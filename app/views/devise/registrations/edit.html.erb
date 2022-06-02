@@ -1,0 +1,48 @@
+<h2>Редактировать профиль</h2>
+<br>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+<form>
+  <div class="field form-group">
+
+    <%= f.email_field :email, autofocus: true, autocomplete: "Эл.Почта", class:"form-control", placeholder: "Эл.Почта" %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field form-group">
+    <br>
+    <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder: "Новый пароль (если вы передумали, вернитесь назад)"  %>
+    <% if @minimum_password_length %>
+      <em>Минимальное количество символов <%= @minimum_password_length %></em>
+    <% end %>
+  </div>
+
+  <div class="field form-group">
+  <br>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", placeholder: "Повторить пароль" %>
+  </div>
+
+  <div class="field form-group">
+    <br>
+    <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control", placeholder: "Предыдущий пароль"  %>
+    <i>(Нам необходим ваш старый пароль для принятия изменений)</i>
+  </div>
+
+  <br>
+  <div class="actions form-group">
+    <%= f.submit "Обновить", class:"btn btn-secondary" %>
+  </div>
+</form>
+<% end %>
+
+<br>
+<h4>Удалить аккаунт?</h4>
+
+<p>Не понравилось у нас? <%= button_to "Удалить аккаунт", registration_path(resource_name), data: { confirm: "Вы уверены?" }, method: :delete, class:"btn btn-danger" %></p>
+
+<%= link_to "Назад", :back, class:"btn btn-secondary" %>

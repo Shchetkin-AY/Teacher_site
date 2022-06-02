@@ -1,0 +1,11 @@
+<h1>Редактировать информацию</h1>
+<br>
+
+<%= render "form", friend: @friend %>
+
+<br>
+
+<div>
+  <%= link_to "Просмотреть", @friend, class:"btn btn-secondary" %>
+  <%= link_to "Назад", friends_path, class:"btn btn-secondary" %>
+</div>
